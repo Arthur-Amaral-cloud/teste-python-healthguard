@@ -108,8 +108,10 @@ Para configurar sua maquína insira o código de configuração do DAC:""")
             acaoComumBanco(f"UPDATE Dac SET codigoValidacao = sha2('{codigo_gerado}',256) WHERE codigoValidacao = '{codigo_configuracao}'")
             codigo_configuracao_criptografado = acaoComumBanco(f"SELECT codigoValidacao FROM Dac WHERE idDac = {id_dac[0][0]}")
             validacao_cofiguracao.append(id_dac[0][0])
+            print("Gerando txt")
             with open(nome_arquivo,'w', encoding='utf-8') as txt:
                 txt.write(codigo_configuracao_criptografado[0][0])
+            print("Txt Gerado")
             return validacao_cofiguracao
     
 def sorteadorTexto(num_caracteres):
